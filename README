@@ -24,10 +24,8 @@ http://docs.djangoproject.com/en/dev/intro/tutorial01/#database-setup
  git add ./*
  git commit -m "First commit"
  mkdir ./plugins
- git submodule add git@github.com:srosro/djog.git
- git submodule add git@github.com:brosner/django-tagging.git
- mv ./djog ./plugins/
- mv ./django-tagging ./plugins/
+ git submodule add git@github.com:srosro/djog.git ./plugins/djog
+ git submodule add git@github.com:brosner/django-tagging.git ./plugins/django-tagging
  ln -s ./plugins/djog/blog ./blog
  ln -s ./plugins/django-tagging/tagging ./tagging
  git add ./*
