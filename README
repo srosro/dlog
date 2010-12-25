@@ -34,13 +34,15 @@ http://docs.djangoproject.com/en/dev/intro/tutorial01/#database-setup
  git commit -m "Submodules"
 
 5) Add the apps to INSTALLED_APPS in settings.py:
+ 'django.contrib.comments',
  'blog',
  'tagging',
 
 6) Add blog settings import to settings.py:
  from blog.settings import *
 
-7) Add this URL pattern to your urls.py:
+7) Add these URL patterns to your urls.py:
+ (r'^blog/comments/', include('django.contrib.comments.urls')),
  (r'^blog/', include('blog.urls')),
 
 8) Enable django admin to manage your blog:
