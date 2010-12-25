@@ -1,0 +1,74 @@
+{% load blog_tags tagging_tags %}
+{% tags_for_model blog.entry as tag_entry %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}" version="-//W3C//DTD XHTML 1.1//EN" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="cache-control" content="public" />
+    <meta name="robots" content="follow, all" />
+    <meta name="language" content="{{ LANGUAGE_CODE }}" />
+    <meta name="description" content="{% block meta-description %}Demonstration of the Zinnia Blog application.{% endblock %}" />
+    <meta name="keywords" content="django, blog, zinnia, {{ tag_entry|join:", "}}, {% block meta-keywords %}{% endblock %}" />
+    <meta name="author" content="Fantomas42" />
+    {% block meta %}{% endblock %}
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="stylesheet" type="text/css" media="screen, projection" href="{{ MEDIA_URL }}css/screen.css" />
+    <link rel="stylesheet" type="text/css" media="print" href="{{ MEDIA_URL }}css/print.css" />
+    <!--[if lt IE 8]>
+	<link rel="stylesheet" type="text/css" media="screen, projection" href="{{ MEDIA_URL }}css/ie.css" />
+    <![endif]-->
+    {% get_archives_entries "blog/tags/link_archives_entries.html" %}
+    <link rel="pingback" href="/xmlrpc/" />
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed of lastest entries" href="{% url zinnia_entry_latest_feed %}" />
+    {% block link %}{% endblock %}
+    {% block script %}{% endblock %}
+    <title>PhotosBlag - {% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="header" class="span-24">
+				<a href="{% url zinnia_entry_archive_index %}"><img src="/media/img/header.png"></a>
+			</div>
+
+			<div id="body" class="span-16 last">
+				{% block content %}<h3>You need to override this block.</h3>{% endblock %}
+			</div>
+
+			<div id="sidebar" class="span-6 last">
+			  <form method="get" id="searchform" action="{% url zinnia_entry_search %}">
+			    <p>
+			      <input type="text" value="Search" name="pattern" id="searchbox" onfocus="this.value=''"/>
+			      <input type="submit" class="submitbutton" value="" />
+			    </p>
+			  </form>
+
+				<a href="{% url zinnia_entry_latest_feed %}">
+					<img src="/media/img/rss.png" class="icon">
+					Subscribe to RSS Feed
+				</a>
+
+				<div id="popular">
+				  <h4>Popular Posts</h4>
+				  {% get_popular_entries 5 %}
+				</div>
+				<div id="tags">
+				  <h4>Topics</h4>
+				  {% tag_cloud_for_model blog.entry as tag_cloud with steps=6 %}
+				  <ul>
+				    {% for tag in tag_cloud %}
+				    <li>
+				      <a href="{% url zinnia_tag_detail tag.name %}" title="{{ tag.count }} entries" class="tag_{{ tag.font_size }}">{{ tag }}</a>
+				    </li>
+				    {% endfor %}
+				  </ul>
+				</div>
+
+			</div>
+
+			<div id="footer" class="span-16 last">
+			</div>
+		</div>
+  </body>
+</html>
+
+

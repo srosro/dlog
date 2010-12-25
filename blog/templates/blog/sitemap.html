@@ -1,0 +1,31 @@
+{% extends "blog/base.html" %}
+{% load blog_tags %}
+
+{% block title %}Sitemap{% endblock %}
+
+{% block content %}
+<h2>Sitemap</h2>
+<div class="montharchives">
+  <h3>Monthly archives</h3>
+  {% get_archives_entries %}
+</div>
+
+<div class="allentries">
+	<h3>All entries</h3>
+  <ul>
+    {% for entry in entries %}
+    <li>
+      <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}">{{ entry.title }}</a>
+      - {{ entry.creation_date|date:"F d Y"|capfirst }}
+      - <img src="/media/img/comments.png" class="icon">{{ entry.comments.count }}
+    </li>
+    {% empty %}
+    <li>
+			No posts yet.
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+
+{% endblock %}
