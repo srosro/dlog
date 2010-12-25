@@ -6,6 +6,7 @@ Requires django-tagging (https://github.com/brosner/django-tagging)
 
 
 /// N00B GETTING STARTED ///
+(Works as of December 2010)
 
 1) Download & install Django
 http://www.djangoproject.com/download/
@@ -22,16 +23,35 @@ http://docs.djangoproject.com/en/dev/intro/tutorial01/#database-setup
  git init
  git add ./*
  git commit -m "First commit"
+ mkdir ./plugins
  git submodule add git@github.com:srosro/djog.git
  git submodule add git@github.com:brosner/django-tagging.git
  mv ./djog ./plugins/
  mv ./django-tagging ./plugins/
  ln -s ./plugins/djog/blog ./blog
- ln -s ./djang-tagging/tagging ./tagging
+ ln -s ./plugins/django-tagging/tagging ./tagging
+ git add ./*
  git commit -m "Submodules"
 
-5) Add this URL pattern to your urls.py (eg, see sample_urls.py):
-    (r'^blog/', include('blog.urls')),
+5) Add the apps to INSTALLED_APPS in settings.py:
+ 'blog',
+ 'tagging',
+
+6) Add blog settings import to settings.py:
+ from blog.settings import *
+
+7) Add this URL pattern to your urls.py:
+ (r'^blog/', include('blog.urls')),
+
+8) Enable django admin to manage your blog:
+http://docs.djangoproject.com/en/dev/ref/contrib/admin/
+
+9) Run syncdb:
+ python manage.py syncdb
+
+10) And you're off!
+ python manage.py runserver
+
 
 /// LICENSE ///
 
