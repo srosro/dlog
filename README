@@ -2,6 +2,36 @@
 
 This is intended to be a lightweight django blog application.  Forked from Zinnia (https://github.com/Fantomas42/django-blog-zinnia)
 
+Requires django-tagging (https://github.com/brosner/django-tagging)
+
+
+/// N00B GETTING STARTED ///
+
+1) Download & install Django
+http://www.djangoproject.com/download/
+http://docs.djangoproject.com/en/dev/intro/install/
+
+2) Make a Django project
+ django-admin.py startproject mysite
+
+3) Set up a database
+http://docs.djangoproject.com/en/dev/intro/tutorial01/#database-setup
+
+4) Set up plugins
+ cd ./mysite
+ git init
+ git add ./*
+ git commit -m "First commit"
+ git submodule add git@github.com:srosro/djog.git
+ git submodule add git@github.com:brosner/django-tagging.git
+ mv ./djog ./plugins/
+ mv ./django-tagging ./plugins/
+ ln -s ./plugins/djog/blog ./blog
+ ln -s ./djang-tagging/tagging ./tagging
+ git commit -m "Submodules"
+
+5) Add this URL pattern to your urls.py (eg, see sample_urls.py):
+    (r'^blog/', include('blog.urls')),
 
 /// LICENSE ///
 
