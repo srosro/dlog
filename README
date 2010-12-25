@@ -1,0 +1,9 @@
+/// ABOUT ///
+
+This is intended to be a lightweight django blog application.  Forked from Zinnia (https://github.com/Fantomas42/django-blog-zinnia)
+
+
+/// LICENSE ///
+
+This project will probably inherit Zinnia's license, once I can figure out what it is.  If Zinnia is unlicensed then I'm licensing this under CC Attribution-ShareAlike 3.0 (http://creativecommons.org/licenses/by-sa/3.0/)
+
