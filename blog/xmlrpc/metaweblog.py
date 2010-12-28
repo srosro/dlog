@@ -43,7 +43,7 @@ def authenticate(username, password, permission=None):
 def blog_structure(site):
     """A blog structure"""
     return {'url': 'http://%s%s' % (
-        site.domain, reverse('zinnia_entry_archive_index')),
+        site.domain, reverse('entry_archive_index')),
             'blogid': settings.SITE_ID,
             'blogName': site.name}
 

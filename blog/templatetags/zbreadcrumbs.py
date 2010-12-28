@@ -30,7 +30,7 @@ def day_crumb(datetime):
     return Crumb(day, reverse('zinnia_entry_archive_day',
                               args=[year, month, day]))
 
-zinnia_root_url = reverse('zinnia_entry_archive_index')
+zinnia_root_url = reverse('entry_archive_index')
 
 archives_crumb = Crumb(_('Archives'))
 tags_crumb = Crumb(_('Tags'), reverse('zinnia_tag_list'))

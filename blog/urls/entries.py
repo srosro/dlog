@@ -25,9 +25,9 @@ entry_conf_detail['queryset'] = Entry.objects.all()
 
 urlpatterns = patterns('blog.views.entries',
                        url(r'^$', 'entry_index', entry_conf_list,
-                           name='zinnia_entry_archive_index'),
+                           name='entry_archive_index'),
                        url(r'^page/(?P<page>\d+)/$', 'entry_index', entry_conf_list,
-                           name='zinnia_entry_archive_index_paginated'),
+                           name='entry_archive_index_paginated'),
                        url(r'^(?P<year>\d{4})/$', 'entry_year',
                            entry_conf_year, name='zinnia_entry_archive_year'),
                        url(r'^(?P<year>\d{4})/(?P<month>\d{2})/$', 'entry_month',

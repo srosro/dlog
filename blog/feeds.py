@@ -80,7 +80,7 @@ class LatestEntries(EntryFeed):
     description = _('The latest entries for the site %s') % current_site.domain
 
     def link(self):
-        return reverse('zinnia_entry_archive_index')
+        return reverse('entry_archive_index')
 
     def items(self):
         return Entry.published.all()

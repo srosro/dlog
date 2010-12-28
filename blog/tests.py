@@ -261,7 +261,7 @@ class ZinniaViewsTestCase(TestCase):
             response = self.client.get(url)
             self.assertEquals(len(response.context['object_list']), second_expected)
 
-    def test_zinnia_entry_archive_index(self):
+    def test_entry_archive_index(self):
         self.check_publishing_context('/', 2, 3)
 
     def test_zinnia_entry_archive_year(self):
