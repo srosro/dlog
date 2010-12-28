@@ -22,7 +22,7 @@
     <link rel="alternate" type="application/rss+xml" title="RSS Feed of lastest entries" href="{% url zinnia_entry_latest_feed %}" />
     {% block link %}{% endblock %}
     {% block script %}{% endblock %}
-    <title>PhotosBlag - {% block title %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
     <div id="container">

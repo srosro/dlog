@@ -42,25 +42,6 @@
     <span>{% trans "No tags" %}</span>
     {% endfor %}
   </p>
-
-  <p class="entryComments last">
-    <!--<img src="/media/img/comments.png">-->
-		{% with object.comments.count as comment_count %}
-    {% if comment_count %}
-    <a href="{{ object.get_absolute_url }}#comments" title="{{ object.title }}">
-      {{ comment_count }} comment{{comment_count|pluralize }}
-    </a>
-    {% else %}
-      {% if object.comment_enabled %}
-      	<a href="{{ object.get_absolute_url }}#comments" title="{{ object.title }}">
-	  			No comments yet.
-    		</a>
-      {% else %}
-      {% trans "Comments are closed." %}
-      {% endif %}
-    {% endif %}
-    {% endwith %}
-  </p>
 </div>
 
 

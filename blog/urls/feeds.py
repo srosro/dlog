@@ -13,6 +13,6 @@ urlpatterns = patterns('',
                        url(r'^search/(?P<slug>[-\w]+)/$', SearchEntries(),
                            name='zinnia_entry_search_feed'),
                        url(r'^comments/(?P<slug>[-\w]+)/$', CommentEntries(),
-                           name='zinnia_entry_comment_feed'),
+                           name='entry_comment_feed'),
                        )
 
