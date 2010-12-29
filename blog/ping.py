@@ -21,7 +21,7 @@ class DirectoryPinger(object):
 
         if not blog_url or not blog_feed:
             blog_url = '%s%s' % (site, reverse('entry-archive-index'))
-            blog_feed = '%s%s' % (site, reverse('zinnia_feeds', args=['latest', ]))
+            blog_feed = '%s%s' % (site, reverse('entry-latest-feed'))
 
     def ping(self, entry):
         entry_url = '%s%s' % (site, entry.get_absolute_url())

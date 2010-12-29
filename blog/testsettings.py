@@ -7,7 +7,7 @@ ROOT_URLCONF = 'urls.tests'
 
 TEMPLATE_CONTEXT_PROCESSORS = [
     'django.core.context_processors.request',
-    'context_processors.media',
+    'context_processors.template_settings',
     'context_processors.version',]
 
 

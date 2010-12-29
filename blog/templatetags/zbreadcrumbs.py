@@ -29,9 +29,8 @@ def day_crumb(datetime):
     day = datetime.strftime('%d')
     return Crumb(day, reverse('entry-archive-day',
                               args=[year, month, day]))
-
+                              
 zinnia_root_url = reverse('entry-archive-index')
-
 archives_crumb = Crumb(_('Archives'))
 tags_crumb = Crumb(_('Tags'), reverse('tag-list'))
 authors_crumb = Crumb(_('Authors'), reverse('author-list'))

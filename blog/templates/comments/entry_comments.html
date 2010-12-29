@@ -1,0 +1,53 @@
+{% load tagging_tags comments blog_tags %}
+
+<p class="entryComments last">
+  <!--<img src="/media/img/comments.png">-->
+  	{% with object_cached.comments.count as comment_count %}
+  {% if comment_count %}
+  <a href="{{ object_cached.get_absolute_url }}#comments" title="{{ object_cached.title }}">
+    {{ comment_count }} comment{{comment_count|pluralize }}
+  </a>
+  {% else %}
+    {% if object_cached.comment_enabled %}
+    	<a href="{{ object_cached.get_absolute_url }}#comments" title="{{ object_cached.title }}">
+    			No comments yet.
+  		</a>
+    {% else %}
+    	Comments are closed.
+    {% endif %}
+  {% endif %}
+  {% endwith %}
+</p>
+
+<div id="comments" class="last">
+  {% with object_cached.comments as comment_list %}
+  {% if comment_list.count %}
+  <ul id="commentList">
+    {% for comment in comment_list %}
+    <li id="comment_{{ comment.pk }}" class="comment last">
+  		<img class="right" src="{% get_gravatar comment.email 48 "G" %}" class="gravatar" alt="{{ comment.user_name }}"/>
+	  	<p class="commentBody">
+				{{ comment.comment|safe }}
+	  	</p>
+	  	<p class="entryInfo">
+		    by
+				{% if comment.url %}
+		  		<a href="{{ comment.url }}">{{ comment.user_name }}</a>
+		  	{% else %}
+		  		{{ comment.user_name }}
+		  	{% endif %}
+		    on {{ comment.submit_date|date:"F d Y @ H:i"|capfirst }}
+		  </p>
+    </li>
+    {% endfor %}
+  </ol>
+  {% endif %}
+  {% endwith %}
+</div>
+{% if object_cached.comment_enabled %}
+	<div class="commentForm last">
+	  {% render_comment_form for object_cached %}
+	</div>
+{% else %}
+	<p>Comments are closed.</p>
+{% endif %}

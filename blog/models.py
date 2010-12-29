@@ -104,7 +104,7 @@ class Entry(models.Model):
     def comments(self):
         """Return published comments"""
         from django.contrib.comments.models import Comment
-        return Comment.objects.for_model(self).filter(is_public=True)
+        return Comment.objects.for_model(self).filter(is_public=True).filter(is_removed=False)
 
     def __unicode__(self):
         return '%s: %s' % (self.title, self.get_status_display())

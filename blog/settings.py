@@ -2,7 +2,7 @@
 PING_DIRECTORIES = ()
 SAVE_PING_DIRECTORIES = bool(PING_DIRECTORIES)
 
-COPYRIGHT = 'Facebook, Inc'
+COPYRIGHT = 'Your Name'
 
 PAGINATION = 10
 ALLOW_EMPTY = True
@@ -26,4 +26,7 @@ except ImportError:
 
 TWITTER_USER = ''
 TWITTER_PASSWORD = ''
+
+#Disqus (optional)
+DISQUS_SHORTNAME = ''
 

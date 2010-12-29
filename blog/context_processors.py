@@ -1,9 +1,12 @@
 from django.conf import settings
 from django.contrib.sites.models import Site
 
-def media(request):
-    """Adds media-related context variables to the context"""
-    return {'MEDIA_URL': settings.MEDIA_URL}
+def template_settings(request):
+    """Exposes specific settings to templates"""
+    return {
+        'MEDIA_URL': settings.MEDIA_URL,
+        'DISQUS_SHORTNAME': settings.DISQUS_SHORTNAME
+    }
 
 def domain(request):
     """Add domain of project to context"""
