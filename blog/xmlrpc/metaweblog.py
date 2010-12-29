@@ -43,7 +43,7 @@ def authenticate(username, password, permission=None):
 def blog_structure(site):
     """A blog structure"""
     return {'url': 'http://%s%s' % (
-        site.domain, reverse('zinnia_entry_archive_index')),
+        site.domain, reverse('entry-archive-index')),
             'blogid': settings.SITE_ID,
             'blogName': site.name}
 
@@ -55,7 +55,7 @@ def user_structure(user, site):
             'lastname': user.last_name,
             'firstname': user.first_name,
             'url': 'http://%s%s' % (
-                site.domain, reverse('zinnia_author_detail', args=[user.username]))}
+                site.domain, reverse('author-detail', args=[user.username]))}
 
 def post_structure(entry, site):
     """A post structure with extensions"""

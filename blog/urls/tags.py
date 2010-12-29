@@ -16,10 +16,10 @@ tag_conf_entry = {'queryset_or_model': Entry.published.all(),
 
 urlpatterns = patterns('blog.views.tags',
                        url(r'^$', 'tag_list',
-                           tag_conf, name='zinnia_tag_list'),
+                           tag_conf, name='tag-list'),
                        url(r'^(?P<tag>[-\w]+)/$', 'tag_detail',
-                           tag_conf_entry, name='zinnia_tag_detail'),
+                           tag_conf_entry, name='tag-detail'),
                        url(r'^(?P<tag>[-\w]+)/page/(?P<page>\d+)/$',
                            'tag_detail', tag_conf_entry,
-                           name='zinnia_tag_detail_paginated'),
+                           name='tag-detail-paginated'),
                        )

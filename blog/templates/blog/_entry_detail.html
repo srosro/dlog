@@ -10,7 +10,7 @@
   <p class="entryInfo">
     by
 		{% for author in object.authors.all %}
-    	<a href="{% url zinnia_author_detail author %}" title="{% blocktrans with author.get_full_name as author.get_full_name %}Show {{ author.get_full_name }} entries{% endblocktrans %}"><strong>{{ author.get_full_name }}</strong></a>
+    	<a href="{% url author-detail author %}" title="{% blocktrans with author.get_full_name as author.get_full_name %}Show {{ author.get_full_name }} entries{% endblocktrans %}"><strong>{{ author.get_full_name }}</strong></a>
 			{% if not forloop.last %}, {% endif %}
     {% endfor %}
     on {{ object.creation_date|date:"F d Y"|capfirst }}
@@ -37,7 +37,7 @@
     Topics:
     {% tags_for_object object as tag_list %}
     {% for tag in tag_list %}
-    <a href="{% url zinnia_tag_detail tag.name %}" title="Tag {{ tag }}">{{ tag }}</a>
+    <a href="{% url tag-detail tag.name %}" title="Tag {{ tag }}">{{ tag }}</a>
     {% empty %}
     <span>{% trans "No tags" %}</span>
     {% endfor %}

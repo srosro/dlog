@@ -80,7 +80,7 @@ class LatestEntries(EntryFeed):
     description = _('The latest entries for the site %s') % current_site.domain
 
     def link(self):
-        return reverse('zinnia_entry_archive_index')
+        return reverse('entry-archive-index')
 
     def items(self):
         return Entry.published.all()
@@ -95,7 +95,7 @@ class AuthorEntries(EntryFeed):
         return entries_published(obj.entry_set)
 
     def link(self, obj):
-        return reverse('zinnia_author_detail', args=[obj.username])
+        return reverse('author-detail', args=[obj.username])
 
     def title(self, obj):
         return _('Entries for author %s') % obj.username
@@ -114,7 +114,7 @@ class TagEntries(EntryFeed):
         return TaggedItem.objects.get_by_model(Entry.published.all(), obj)
 
     def link(self, obj):
-        return reverse('zinnia_tag_detail', args=[obj.name])
+        return reverse('tag-detail', args=[obj.name])
 
     def title(self, obj):
         return _('Entries for the tag %s') % obj.name
@@ -133,7 +133,7 @@ class SearchEntries(EntryFeed):
         return Entry.published.search(obj)
 
     def link(self, obj):
-        return '%s?pattern=%s' % (reverse('zinnia_entry_search'), obj)
+        return '%s?pattern=%s' % (reverse('entry-search'), obj)
 
     def title(self, obj):
         return _("Results of the search for %s") % obj

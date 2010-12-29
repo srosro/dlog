@@ -2,5 +2,5 @@
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns('blog.views.search',
-                       url(r'^$', 'entry_search', name='zinnia_entry_search'),
+                       url(r'^$', 'entry_search', name='entry-search'),
                        )

@@ -13,28 +13,28 @@ class Crumb(object):
 
 def year_crumb(datetime):
     year = datetime.strftime('%Y')
-    return Crumb(year, reverse('zinnia_entry_archive_year',
+    return Crumb(year, reverse('entry-archive-year',
                                args=[year]))
 
 def month_crumb(datetime):
     year = datetime.strftime('%Y')
     month = datetime.strftime('%m')
     month_text = datetime.strftime('%b').capitalize()
-    return Crumb(month_text, reverse('zinnia_entry_archive_month',
+    return Crumb(month_text, reverse('entry-archive-month',
                                      args=[year, month]))
 
 def day_crumb(datetime):
     year = datetime.strftime('%Y')
     month = datetime.strftime('%m')
     day = datetime.strftime('%d')
-    return Crumb(day, reverse('zinnia_entry_archive_day',
+    return Crumb(day, reverse('entry-archive-day',
                               args=[year, month, day]))
 
-zinnia_root_url = reverse('zinnia_entry_archive_index')
+zinnia_root_url = reverse('entry-archive-index')
 
 archives_crumb = Crumb(_('Archives'))
-tags_crumb = Crumb(_('Tags'), reverse('zinnia_tag_list'))
-authors_crumb = Crumb(_('Authors'), reverse('zinnia_author_list'))
+tags_crumb = Crumb(_('Tags'), reverse('tag-list'))
+authors_crumb = Crumb(_('Authors'), reverse('author-list'))
 
 MODEL_BREADCRUMBS = {'Tag': lambda x: [tags_crumb, Crumb(x.name)],
                      'User': lambda x: [authors_crumb, Crumb(x.username)],

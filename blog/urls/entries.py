@@ -25,19 +25,19 @@ entry_conf_detail['queryset'] = Entry.objects.all()
 
 urlpatterns = patterns('blog.views.entries',
                        url(r'^$', 'entry_index', entry_conf_list,
-                           name='zinnia_entry_archive_index'),
+                           name='entry-archive-index'),
                        url(r'^page/(?P<page>\d+)/$', 'entry_index', entry_conf_list,
-                           name='zinnia_entry_archive_index_paginated'),
+                           name='entry-archive-index-paginated'),
                        url(r'^(?P<year>\d{4})/$', 'entry_year',
-                           entry_conf_year, name='zinnia_entry_archive_year'),
+                           entry_conf_year, name='entry-archive-year'),
                        url(r'^(?P<year>\d{4})/(?P<month>\d{2})/$', 'entry_month',
-                           entry_conf, name='zinnia_entry_archive_month'),
+                           entry_conf, name='entry-archive-month'),
                        url(r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/$', 'entry_day',
-                           entry_conf, name='zinnia_entry_archive_day'),
+                           entry_conf, name='entry-archive-day'),
                        )
 
 urlpatterns += patterns('django.views.generic.date_based',
                         url(r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/(?P<slug>[-\w]+)/$',
-                            'object_detail', entry_conf_detail, name='zinnia_entry_detail'),
+                            'object_detail', entry_conf_detail, name='entry-detail'),
                         )
 

@@ -9,11 +9,11 @@ author_conf = {'queryset': authors_published(),
 
 urlpatterns = patterns('blog.views.authors',
                        url(r'^$', 'author_list',
-                           author_conf, 'zinnia_author_list'),
+                           author_conf, 'author-list'),
                        url(r'^(?P<username>[-\w]+)/$', 'author_detail',
-                           name='zinnia_author_detail'),
+                           name='author-detail'),
                        url(r'^(?P<username>[-\w]+)/page/(?P<page>\d+)/$',
                            'author_detail',
-                           name='zinnia_author_detail_paginated'),
+                           name='author-detail-paginated'),
                        )
 

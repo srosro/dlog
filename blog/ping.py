@@ -20,7 +20,7 @@ class DirectoryPinger(object):
         self.server = xmlrpclib.ServerProxy(self.server_name)
 
         if not blog_url or not blog_feed:
-            blog_url = '%s%s' % (site, reverse('zinnia_entry_archive_index'))
+            blog_url = '%s%s' % (site, reverse('entry-archive-index'))
             blog_feed = '%s%s' % (site, reverse('zinnia_feeds', args=['latest', ]))
 
     def ping(self, entry):

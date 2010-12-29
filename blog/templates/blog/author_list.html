@@ -9,7 +9,7 @@
   <ul>
     {% for object in object_list %}
     <li>
-      <a href="{% url zinnia_author_detail object.username %}" title="{{ object.username }}">{{ object.username }}</a>
+      <a href="{% url author-detail object.username %}" title="{{ object.username }}">{{ object.username }}</a>
     </li>
     {% endfor %}
   </ul>

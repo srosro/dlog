@@ -19,7 +19,7 @@
     <![endif]-->
     {% get_archives_entries "blog/tags/link_archives_entries.html" %}
     <link rel="pingback" href="/xmlrpc/" />
-    <link rel="alternate" type="application/rss+xml" title="RSS Feed of lastest entries" href="{% url zinnia_entry_latest_feed %}" />
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed of lastest entries" href="{% url entry-latest-feed %}" />
     {% block link %}{% endblock %}
     {% block script %}{% endblock %}
     <title>PhotosBlag - {% block title %}{% endblock %}</title>
@@ -27,7 +27,7 @@
   <body>
     <div id="container">
       <div id="header" class="span-24">
-				<a href="{% url zinnia_entry_archive_index %}"><h1>My Blog</h1></a>
+				<a href="{% url entry-archive-index %}"><h1>My Blog</h1></a>
 			</div>
 
 			<div id="body" class="span-16 last">
@@ -35,14 +35,14 @@
 			</div>
 
 			<div id="sidebar" class="span-6 last">
-			  <form method="get" id="searchform" action="{% url zinnia_entry_search %}">
+			  <form method="get" id="searchform" action="{% url entry-search %}">
 			    <p>
 			      <input type="text" value="Search" name="pattern" id="searchbox" onfocus="this.value=''"/>
 			      <input type="submit" class="submitbutton" value="" />
 			    </p>
 			  </form>
 
-				<a href="{% url zinnia_entry_latest_feed %}">
+				<a href="{% url entry-latest-feed %}">
 					<!--<img src="/media/img/rss.png" class="icon">-->
 					Subscribe to RSS Feed
 				</a>
@@ -57,7 +57,7 @@
 				  <ul>
 				    {% for tag in tag_cloud %}
 				    <li>
-				      <a href="{% url zinnia_tag_detail tag.name %}" title="{{ tag.count }} entries" class="tag_{{ tag.font_size }}">{{ tag }}</a>
+				      <a href="{% url tag-detail tag.name %}" title="{{ tag.count }} entries" class="tag_{{ tag.font_size }}">{{ tag }}</a>
 				    </li>
 				    {% endfor %}
 				  </ul>

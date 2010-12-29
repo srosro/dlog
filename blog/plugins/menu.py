@@ -32,17 +32,17 @@ class EntryMenu(CMSAttachMenu):
             key_archive_day = 'day-%s-%s-%s' % (year, month, day)
 
             if not key_archive_year in archives:
-                nodes.append(NavigationNode(year, reverse('zinnia_entry_archive_year', args=[year]),
+                nodes.append(NavigationNode(year, reverse('entry-archive-year', args=[year]),
                                             key_archive_year, attr=attributes))
                 archives.append(key_archive_year)
 
             if not key_archive_month in archives:
-                nodes.append(NavigationNode(month_text, reverse('zinnia_entry_archive_month', args=[year, month]),
+                nodes.append(NavigationNode(month_text, reverse('entry-archive-month', args=[year, month]),
                                             key_archive_month, key_archive_year, attr=attributes))
                 archives.append(key_archive_month)
 
             if not key_archive_day in archives:
-                nodes.append(NavigationNode(day, reverse('zinnia_entry_archive_day', args=[year, month, day]),
+                nodes.append(NavigationNode(day, reverse('entry-archive-day', args=[year, month, day]),
                                             key_archive_day, key_archive_month, attr=attributes))
                 archives.append(key_archive_day)
 
@@ -56,11 +56,11 @@ class AuthorMenu(CMSAttachMenu):
 
     def get_nodes(self, request):
         nodes = []
-        nodes.append(NavigationNode(_('Authors'), reverse('zinnia_author_list'),
+        nodes.append(NavigationNode(_('Authors'), reverse('author-list'),
                                     'authors'))
         for author in authors_published():
             nodes.append(NavigationNode(author.username,
-                                        reverse('zinnia_author_detail', args=[author.username]),
+                                        reverse('author-detail', args=[author.username]),
                                         author.pk, 'authors'))
         return nodes
 
@@ -70,11 +70,11 @@ class TagMenu(CMSAttachMenu):
 
     def get_nodes(self, request):
         nodes = []
-        nodes.append(NavigationNode(_('Tags'), reverse('zinnia_tag_list'),
+        nodes.append(NavigationNode(_('Tags'), reverse('tag-list'),
                                     'tags'))
         for tag in tags_published():
             nodes.append(NavigationNode(tag.name,
-                                        reverse('zinnia_tag_detail', args=[tag.name]),
+                                        reverse('tag-detail', args=[tag.name]),
                                         tag.pk, 'tags'))
         return nodes
 

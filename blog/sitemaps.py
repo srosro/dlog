@@ -38,7 +38,7 @@ class AuthorSitemap(Sitemap):
         return entries[0].creation_date
 
     def location(self, obj):
-        return reverse('zinnia_author_detail', args=[obj.username])
+        return reverse('author-detail', args=[obj.username])
 
 class TagSitemap(Sitemap):
     """Sitemap for tags"""
@@ -69,4 +69,4 @@ class TagSitemap(Sitemap):
         return '%.1f' % priority
 
     def location(self, obj):
-        return reverse('zinnia_tag_detail', args=[obj.name])
+        return reverse('tag-detail', args=[obj.name])

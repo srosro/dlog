@@ -15,8 +15,8 @@ from moderator import EntryCommentModerator
 from blog.managers import entries_published
 from blog.managers import EntryPublishedManager
 from blog.managers import DRAFT, HIDDEN, PUBLISHED
-from settings import USE_BITLY
-from settings import UPLOAD_TO
+from blog.misc import get_admin_url
+from settings import USE_BITLY, UPLOAD_TO
 
 class Entry(models.Model):
     """Base design for publishing entry"""
@@ -117,6 +117,10 @@ class Entry(models.Model):
             'day': self.creation_date.strftime('%d'),
             'slug': self.slug})
 
+    def get_admin_url(self):
+        import pdb; pdb.set_trace()
+        return get_admin_url(self)
+        
     class Meta:
         ordering = ['-creation_date']
         verbose_name = _('entry')
