@@ -15,7 +15,6 @@ from moderator import EntryCommentModerator
 from blog.managers import entries_published
 from blog.managers import EntryPublishedManager
 from blog.managers import DRAFT, HIDDEN, PUBLISHED
-from blog.misc import get_admin_url
 from settings import USE_BITLY, UPLOAD_TO
 
 class Entry(models.Model):
@@ -111,15 +110,14 @@ class Entry(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('zinnia_entry_detail', (), {
+        return ('entry-detail', (), {
             'year': self.creation_date.strftime('%Y'),
             'month': self.creation_date.strftime('%m'),
             'day': self.creation_date.strftime('%d'),
             'slug': self.slug})
-
+    
     def get_admin_url(self):
-        import pdb; pdb.set_trace()
-        return get_admin_url(self)
+        return "/admin/blog/entry/%s/" % self.id
         
     class Meta:
         ordering = ['-creation_date']
