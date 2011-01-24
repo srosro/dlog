@@ -9,13 +9,13 @@ from django.utils.translation import ugettext, ugettext_lazy as _
 from django.core.urlresolvers import reverse, NoReverseMatch
 
 from blog.models import Entry
-from blog.managers import PUBLISHED
 from settings import USE_BITLY
 from settings import USE_TWITTER
 from settings import TWITTER_USER
 from settings import TWITTER_PASSWORD
 from settings import PING_DIRECTORIES
 from settings import SAVE_PING_DIRECTORIES
+from settings import STATUS_CHOICES
 from ping import DirectoryPinger
 
 
@@ -159,12 +159,12 @@ class EntryAdmin(admin.ModelAdmin):
 
     def make_published(self, request, queryset):
         """Set entries selected as published"""
-        queryset.update(status=PUBLISHED)
+        queryset.update(status=STATUS_CHOICES['Published'])
     make_published.short_description = _('Set entries selected as published')
 
     def make_hidden(self, request, queryset):
         """Set entries selected as hidden"""
-        queryset.update(status='hidden')
+        queryset.update(status=STATUS_CHOICES['Hidden'])
     make_hidden.short_description = _('Set entries selected as hidden')
 
     def make_tweet(self, request, queryset):

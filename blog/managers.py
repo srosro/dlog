@@ -3,11 +3,7 @@ from datetime import datetime
 
 from django.db import models
 from django.contrib.sites.models import Site
-
-
-DRAFT = 0
-HIDDEN = 1
-PUBLISHED = 2
+from blog.settings import STATUS_CHOICES
 
 def tags_published():
     """Return the pusblished tags"""
@@ -21,14 +17,14 @@ def authors_published():
     from django.contrib.auth.models import User
 
     author_ids = [user.pk for user in User.objects.all()
-                  if user.entry_set.filter(status=PUBLISHED).count()]
+                  if user.entry_set.filter(status=STATUS_CHOICES['Published']).count()]
     return User.objects.filter(pk__in=author_ids)
 
 
 def entries_published(queryset):
     """Return only the entries published"""
     now = datetime.now()
-    return queryset.filter(status=PUBLISHED,
+    return queryset.filter(status=STATUS_CHOICES['Published'],
                            start_publication__lte=now,
                            end_publication__gt=now,
                            sites=Site.objects.get_current())

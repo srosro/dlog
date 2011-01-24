@@ -14,10 +14,9 @@ from django.contrib.sites.models import Site
 from django.contrib.comments.models import Comment
 from django.contrib.contenttypes.models import ContentType
 from django.template import TemplateDoesNotExist
-
+from django.conf import settings
 from tagging.models import Tag
 from blog.models import Entry
-from blog.managers import DRAFT, HIDDEN, PUBLISHED
 from blog.managers import tags_published
 from blog.managers import entries_published
 from blog.managers import authors_published
@@ -25,6 +24,7 @@ from xmlrpc.metaweblog import authenticate
 from xmlrpc.metaweblog import post_structure
 from xmlrpc.pingback import generate_pingback_content
 from BeautifulSoup import BeautifulSoup
+from blog.settings import STATUS_CHOICES['Published'] as PUBLISHED
 
 class ManagersTestCase(TestCase):
 
@@ -606,7 +606,7 @@ class MetaWeblogTestCase(TestCase):
         self.assertEquals(entry.content, self.entry_2.html_content)
         self.assertEquals(entry.excerpt, self.entry_2.content)
         self.assertEquals(entry.slug, self.entry_2.slug)
-        self.assertEquals(entry.status, DRAFT)
+        self.assertEquals(entry.status, STATUS_CHOICES['Draft'])
         self.assertEquals(entry.creation_date, self.entry_2.creation_date)
 
         entry.title = 'Title edited'
@@ -623,7 +623,7 @@ class MetaWeblogTestCase(TestCase):
         self.assertEquals(entry.content, post['description'])
         self.assertEquals(entry.excerpt, post['description'])
         self.assertEquals(entry.slug, 'slug-edited')
-        self.assertEquals(entry.status, PUBLISHED)
+        self.assertEquals(entry.status, STATUS_CHOICES['Published'])
         self.assertEquals(entry.creation_date, datetime(2000, 1, 1))
 
 

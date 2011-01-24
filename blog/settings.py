@@ -30,3 +30,7 @@ TWITTER_PASSWORD = ''
 #Disqus (optional)
 DISQUS_SHORTNAME = ''
 
+STATUS_CHOICES = {
+                'Draft': 0,
+                'Hidden': 1,
+                'Published': 2}

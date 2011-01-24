@@ -14,14 +14,14 @@ from tagging.fields import TagField
 from moderator import EntryCommentModerator
 from blog.managers import entries_published
 from blog.managers import EntryPublishedManager
-from blog.managers import DRAFT, HIDDEN, PUBLISHED
-from settings import USE_BITLY, UPLOAD_TO
+from settings import USE_BITLY, UPLOAD_TO, STATUS_CHOICES
 
 class Entry(models.Model):
     """Base design for publishing entry"""
-    STATUS_CHOICES = ((DRAFT, _('draft')),
-                      (HIDDEN, _('hidden')),
-                      (PUBLISHED, _('published')))
+    STATUS_CHOICES_TUPLE = (
+                    (STATUS_CHOICES['Draft'], 'Draft'),
+                    (STATUS_CHOICES['Hidden'], 'Hidden'),
+                    (STATUS_CHOICES['Published'], 'Published'))
 
     title = models.CharField(_('title'), max_length=100)
 
@@ -38,7 +38,7 @@ class Entry(models.Model):
     slug = models.SlugField(help_text=_('used for publication'))
     authors = models.ManyToManyField(User, verbose_name=_('authors'),
                                      blank=True, null=False)
-    status = models.IntegerField(choices=STATUS_CHOICES, default=DRAFT)
+    status = models.IntegerField(choices=STATUS_CHOICES_TUPLE, default=STATUS_CHOICES['Draft'])
     comment_enabled = models.BooleanField(_('comment enabled'), default=True)
 
     creation_date = models.DateTimeField(_('creation date'), default=datetime.now)
@@ -92,7 +92,7 @@ class Entry(models.Model):
     @property
     def is_visible(self):
         """Check if an entry is visible on site"""
-        return self.is_actual and self.status == PUBLISHED
+        return self.is_actual and self.status == STATUS_CHOICES['Published']
 
     @property
     def related_published_set(self):

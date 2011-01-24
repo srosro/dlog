@@ -17,7 +17,6 @@ from django.template.defaultfilters import slugify
 
 from blog.models import Entry
 from settings import UPLOAD_TO
-from blog.managers import DRAFT, PUBLISHED
 from django_xmlrpc.decorators import xmlrpc_func
 
 
@@ -134,7 +133,7 @@ def new_post(blog_id, username, password, post, publish):
                   'creation_date': creation_date,
                   'last_update': creation_date,
                   'slug': post.has_key('wp_slug') and post['wp_slug'] or slugify(post['title']),
-                  'status': publish and PUBLISHED or DRAFT}
+                  'status': publish and STATUS_CHOICES['Published'] or STATUS_CHOICES['Draft']}
     entry = Entry.objects.create(**entry_dict)
     entry.authors.add(user)
     entry.sites.add(Site.objects.get_current())
@@ -159,7 +158,7 @@ def edit_post(post_id, username, password, post, publish):
     entry.creation_date = creation_date
     entry.last_update = datetime.now()
     entry.slug = post.has_key('wp_slug') and post['wp_slug'] or slugify(post['title'])
-    entry.status = publish and PUBLISHED or DRAFT
+    entry.status = publish and STATUS_CHOICES['Published'] or STATUS_CHOICES['Draft'] 
     entry.save()
     return True
 
