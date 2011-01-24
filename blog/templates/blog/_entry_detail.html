@@ -9,12 +9,12 @@
   </h2>
   <p class="entryInfo">
     by
-		{% for author in object.authors.all %}
-    	<a href="{% url author-detail author %}" title="{% blocktrans with author.get_full_name as author.get_full_name %}Show {{ author.get_full_name }} entries{% endblocktrans %}"><strong>{{ author.get_full_name }}</strong></a>
-			{% if not forloop.last %}, {% endif %}
+    {% for author in object.authors.all %}
+      <a href="{% url author-detail author %}" title="{% blocktrans with author.get_full_name as author.get_full_name %}Show {{ author.get_full_name }} entries{% endblocktrans %}"><strong>{{ author.get_full_name }}</strong></a>
+      {% if not forloop.last %}, {% endif %}
     {% endfor %}
     on {{ object.creation_date|date:"F d Y"|capfirst }}
-	{% if user.is_staff %}[<a href="{{object.get_admin_url}}">edit</a>]{% endif %}
+  {% if user.is_staff %}[<a href="{{object.get_admin_url}}">edit</a>]{% endif %}
   </p>
 </div>
 
@@ -23,7 +23,7 @@
   <div class="entryImage">
     <p>
       <a href="{{ object.get_absolute_url }}">
-	<img src="{{ object.image.url }}" alt="{{ object.title }}" class="left" />
+  <img src="{{ object.image.url }}" alt="{{ object.title }}" class="left" />
       </a>
     </p>
   </div>
