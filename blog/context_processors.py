@@ -5,7 +5,8 @@ def template_settings(request):
     """Exposes specific settings to templates"""
     return {
         'MEDIA_URL': settings.MEDIA_URL,
-        'DISQUS_SHORTNAME': settings.DISQUS_SHORTNAME
+        'DISQUS_SHORTNAME': settings.DISQUS_SHORTNAME,
+        'LANGUAGE_CODE': settings.LANGUAGE_CODE
     }
 
 def domain(request):
