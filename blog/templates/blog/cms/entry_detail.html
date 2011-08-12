@@ -2,7 +2,7 @@
 {% for entry in entries %}
 <div class="entry">
   {% with entry as object %}
-  {% with object|truncate_entry|safe as object_content %}
+  {% with object|truncate_entry as object_content %}
   {% include "blog/_entry_detail.html" %}
   {% endwith %}
   {% endwith %}

@@ -22,7 +22,7 @@
 
 {% for object in object_list %}
 <div class="entry">
-  {% with object|truncate_entry|safe as object_content %}
+  {% with object|truncate_entry as object_content %}
   {% include "blog/_entry_detail.html" %}
   {% endwith %}
 </div>

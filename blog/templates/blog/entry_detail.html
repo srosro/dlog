@@ -17,9 +17,7 @@
         style="border:none; overflow:hidden; width:100px; height:21px; float:right;"
         allowTransparency="true"></iframe>
     </div>
-    {% with object.html_content|safe as object_content %}
-        {% include "blog/_entry_detail.html" %}
-      {% endwith %}
+      {% include "blog/_entry_detail.html" %}
   </div>
   {% if DISQUS_SHORTNAME %}
       {% include "comments/disqus.html" %}

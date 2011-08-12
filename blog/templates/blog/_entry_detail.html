@@ -29,7 +29,13 @@
   </div>
   {% endif %}
   <div class="entryContent">
-    {{ object_content }}
+
+    {% if object_content %}
+      {{ object_content|safe }}
+    {% else %}
+      {{object.html_content|safe}}
+    {% endif %}
+
   </div>
 </div>
 
