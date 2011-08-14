@@ -8,6 +8,7 @@ from django.template.defaultfilters import striptags
 from django.template.defaultfilters import linebreaks
 from django.contrib.comments.moderation import moderator
 from django.utils.translation import ugettext_lazy as _
+from django.core.urlresolvers import reverse
 
 from tagging.fields import TagField
 
@@ -115,10 +116,10 @@ class Entry(models.Model):
             'month': self.creation_date.strftime('%m'),
             'day': self.creation_date.strftime('%d'),
             'slug': self.slug})
-    
+
     def get_admin_url(self):
-        return "/admin/blog/entry/%s/" % self.id
-        
+        return reverse('admin:blog_entry_change', args=(self.id,))
+
     class Meta:
         ordering = ['-creation_date']
         verbose_name = _('entry')
