@@ -2,7 +2,7 @@
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
-                       url(r'^tags/', include('blog.urls.tags',)),
+                       url(r'^topics/', include('blog.urls.tags',)),
                        url(r'^feeds/', include('blog.urls.feeds')),
                        url(r'^authors/', include('blog.urls.authors')),
                        url(r'^search/', include('blog.urls.search')),

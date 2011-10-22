@@ -1,19 +1,26 @@
 {% extends "blog/base.html" %}
-{% load i18n tagging_tags %}
+{% load tagging_tags %}
 
 {% block title %}Tags{% endblock %}
 
 {% block content %}
-<h2>Tag list</h2>
-<div>
-  <ul>
-    {% for object in object_list %}
-    <li>
-      <a href="{% url tag-detail object.name %}" title="{{ object }}">{{ object }}</a>
-      {% tagged_objects object in entry as tag_entries %}
-      {% blocktrans count tag_entries|length as entry_count %}{{ entry_count }} entry{% plural %}{{ entry_count }} entries{% endblocktrans %}
-    </li>
-    {% endfor %}
-  </ul>
+
+<div class="articles">
+  <div class="article">
+    <h3>Browse Topics</h3>
+    <div>
+      <ul>
+        {% for object in object_list %}
+        <li>
+          <a href="{% url tag-detail object.name %}" title="{{ object }}">{{ object }}</a>
+          {% tagged_objects object in entry as tag_entries %}
+          {% with tag_count=tag_entries|length %}
+            {{tag_count}} entr{{tag_count|pluralize:"y,ies"}}.
+          {% endwith %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
 </div>
 {% endblock %}

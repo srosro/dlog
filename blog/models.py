@@ -1,4 +1,3 @@
-"""Models of Zinnia"""
 from datetime import datetime
 
 from django.db import models
@@ -116,6 +115,11 @@ class Entry(models.Model):
             'month': self.creation_date.strftime('%m'),
             'day': self.creation_date.strftime('%d'),
             'slug': self.slug})
+
+
+    def get_tags(self):
+        from tagging.models import Tag
+        return Tag.objects.get_for_object(self)
 
     def get_admin_url(self):
         return reverse('admin:blog_entry_change', args=(self.id,))
