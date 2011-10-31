@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block title %}
-  {% if tag %}Tag {{ tag }}{% endif %}
+  {% if tag %}Articles about '{{ tag }}'{% endif %}
   {% if author %}Author {{ author }}{% endif %}
   {% if page_obj %}{% ifnotequal page_obj.number 1 %}Page {{ page_obj.number }}{% endifnotequal %}{% endif %}
 {% endblock %}
