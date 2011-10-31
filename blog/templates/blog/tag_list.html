@@ -14,7 +14,7 @@
         <li>
           <a href="{% url tag-detail object.name %}" title="{{ object }}">{{ object }}</a>
           {% tagged_objects object in entry as tag_entries %}
-          {% with tag_count=tag_entries|length %}
+	  {% with tag_entries|length as tag_count %}
             {{tag_count}} entr{{tag_count|pluralize:"y,ies"}}.
           {% endwith %}
         </li>
