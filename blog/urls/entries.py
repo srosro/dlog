@@ -24,10 +24,10 @@ del entry_conf_detail['allow_empty']
 entry_conf_detail['queryset'] = Entry.objects.all()
 
 urlpatterns = patterns('blog.views.entries',
-                       url(r'^$', 'entry_index', entry_conf_list,
-                           name='entry-archive-index'),
-                       url(r'^page/(?P<page>\d+)/$', 'entry_index', entry_conf_list,
-                           name='entry-archive-index-paginated'),
+                       #url(r'^$', 'entry_index', entry_conf_list,
+                       #    name='entry-archive-index'),
+                       #url(r'^page/(?P<page>\d+)/$', 'entry_index', entry_conf_list,
+                       #    name='entry-archive-index-paginated'),
                        url(r'^(?P<year>\d{4})/$', 'entry_year',
                            entry_conf_year, name='entry-archive-year'),
                        url(r'^(?P<year>\d{4})/(?P<month>\d{2})/$', 'entry_month',
