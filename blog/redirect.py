@@ -5,7 +5,7 @@ from blog.models import Entry
 
 def check(request, url):
     try:
-        e = Entry.objects.get(redirect_url=url.rstrip('/'))
+        e = Entry.objects.get(redirect_url=url.lstrip('/').rstrip('/'))
         new_url = e.get_absolute_url()
     except Entry.DoesNotExist:
         new_url = '/'
