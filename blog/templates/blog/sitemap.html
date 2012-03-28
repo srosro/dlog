@@ -4,7 +4,6 @@
 {% block title %}Sitemap{% endblock %}
 
 {% block content %}
-<h2>Sitemap</h2>
 <div class="montharchives">
   <h3>Monthly archives</h3>
   {% get_archives_entries %}
@@ -15,9 +14,7 @@
   <ul>
     {% for entry in entries %}
     <li>
-      <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}">{{ entry.title }}</a>
-      - {{ entry.creation_date|date:"F d Y"|capfirst }}
-      - <img src="/media/img/comments.png" class="icon">{{ entry.comments.count }}
+      {{ entry.creation_date|date:"F d Y"|capfirst }} <a href="{{ entry.get_absolute_url }}" title="{{ entry.title }}">{{ entry.title }}</a>
     </li>
     {% empty %}
     <li>
@@ -26,6 +23,4 @@
     {% endfor %}
   </ul>
 </div>
-
-
 {% endblock %}
