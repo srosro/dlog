@@ -36,6 +36,8 @@ class Entry(models.Model):
                                      blank=True, null=True)
 
     slug = models.SlugField(help_text=_('used for publication'))
+    redirect_url = models.CharField(help_text='If there was an old url, add it here',
+                               blank=True, null=True, max_length=200)
     authors = models.ManyToManyField(User, verbose_name=_('authors'),
                                      blank=True, null=False)
     status = models.IntegerField(choices=STATUS_CHOICES_TUPLE, default=STATUS_CHOICES['Draft'])

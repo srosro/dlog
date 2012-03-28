@@ -22,8 +22,8 @@ from ping import DirectoryPinger
 class EntryAdmin(admin.ModelAdmin):
     date_hierarchy = 'creation_date'
     fieldsets = ((_('Content'), {'fields': ('title', 'content', 'image', 'status')}),
-                 (_('Options'), {'fields': ('authors', 'slug', 'excerpt', 'related',
-                                            'creation_date', 'start_publication',
+                 (_('Options'), {'fields': ('redirect_url', 'authors', 'slug', 'excerpt', 
+                                            'related', 'creation_date', 'start_publication',
                                             'end_publication', 'comment_enabled'),
                                  'classes': ('collapse', 'collapse-closed')}),
                  (_('Sorting'), {'fields': ('sites', 'tags')}))
